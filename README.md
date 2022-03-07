@@ -1,6 +1,6 @@
 # liveplusplus
 
-(Molecular Matters's Live++)[https://liveplusplus.tech/] is really easy to use already but this small wrapper makes it even more easy to integrate to a new project. CMake will take care of downloading the library binaries and define a preprocessor variable to help locate them when initializing Live++.
+[Molecular Matters's Live++](https://liveplusplus.tech/) is really easy to use already but this small wrapper makes it even more easy to integrate to a new project. CMake will take care of downloading the library binaries and define a preprocessor variable to help locate them when initializing Live++.
 
 The most basic use is to initialize as soon as you can, and then use a sync point at the start of your frame:
 
