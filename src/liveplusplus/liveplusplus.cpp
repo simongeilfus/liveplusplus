@@ -183,7 +183,7 @@ LivePlusPlus::Settings::Settings()
 	: mInstallExceptionHandler( false ),
 	mInitialWindowMode( WindowMode::Minimized ),
 	mReceiveFocusOnRecompile( FocusMode::OnError ),
-	mEnableContinuousCompilation( true ),
+	mEnableContinuousCompilation( false ),
 	mContinuousCompilationTimeout( -1 ),
 	mEnableRestart( false ),
 	mEnableMultiProcessEditing( false )

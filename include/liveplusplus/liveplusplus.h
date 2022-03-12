@@ -128,5 +128,5 @@ private:
 };
 
 #if ! defined( LIVEPLUSPLUS_DISABLE_ALIAS )
-	using Lpp = LivePlusPlus;
+	using lxx = LivePlusPlus;
 #endif
