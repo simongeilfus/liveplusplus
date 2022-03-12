@@ -27,4 +27,4 @@ target_compile_options(liveplusplus PUBLIC /Zi)
 target_compile_features(liveplusplus PRIVATE cxx_std_17)
 
 # set the path as compile definition
-add_compile_definitions( LPP_PATH="${CMAKE_CURRENT_SOURCE_DIR}/third_party/LivePP" )
+target_compile_definitions(liveplusplus PUBLIC LPP_PATH="${CMAKE_CURRENT_SOURCE_DIR}/third_party/LivePP" LPP_ENABLED)
