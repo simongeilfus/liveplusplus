@@ -9,22 +9,22 @@ The most basic use is to initialize as soon as you can, and then use a sync poin
 
 void init()
 {
-    LivePlusPlus::initialize();
+    lxx::initialize();
 }
 
 void render()
 {
-    LivePlusPlus::syncPoint();
+    lxx::syncPoint();
 }
 ```
 
 You can specify what options to customize at initialization time :
 
 ```cpp
-LivePlusPlus::initialize( LivePlusPlus::Settings()
-	.initialWindowMode( LivePlusPlus::WindowMode::Minimized )
-	.receiveFocusOnRecompile( LivePlusPlus::FocusMode::Never )
-	.enableContinuousCompilation( false )
+lxx::initialize( lxx::Settings()
+	.initialWindowMode( lxx::WindowMode::Minimized )
+	.receiveFocusOnRecompile( lxx::FocusMode::Never )
+	.enableContinuousCompilation( true )
 	.additionalCompilerOptions( L"-DLPP_COMPILED" )
 );
 ```
@@ -32,7 +32,7 @@ LivePlusPlus::initialize( LivePlusPlus::Settings()
 Or request for a callback to be called after a patch has been applied:
 
 ```cpp
-LivePlusPlus::instance().addPostPatchFn( [this]() { /* do something */ } );
+lxx::instance().addPostPatchFn( [this]() { /* do something */ } );
 ```
 
 
