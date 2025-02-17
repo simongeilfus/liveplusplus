@@ -3,7 +3,7 @@ cmake_minimum_required (VERSION 3.6)
 #check dependencies
 if(NOT EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/third_party/LivePP)
     message( "-- Downloading live++")
-    set(LIVEPP_ARCHIVE "LPP_1_6_8.zip")
+    set(LIVEPP_ARCHIVE "LPP_2_8_1.zip")
     file(DOWNLOAD "https://liveplusplus.tech/downloads/${LIVEPP_ARCHIVE}" "${CMAKE_CURRENT_SOURCE_DIR}/third_party/${LIVEPP_ARCHIVE}")
     if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/third_party/${LIVEPP_ARCHIVE})
         file(ARCHIVE_EXTRACT INPUT "${CMAKE_CURRENT_SOURCE_DIR}/third_party/${LIVEPP_ARCHIVE}" DESTINATION "${CMAKE_CURRENT_SOURCE_DIR}/third_party/")
@@ -15,8 +15,8 @@ endif()
 project(liveplusplus)
 
 # add sources
-set(INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include ${CMAKE_CURRENT_SOURCE_DIR}/third_party/LivePP/API)
-file(GLOB SOURCES "src/liveplusplus/*.cpp" "include/liveplusplus/*.h")
+set(INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include ${CMAKE_CURRENT_SOURCE_DIR}/third_party)
+file(GLOB SOURCES "src/lxx/*.cpp" "include/lxx/*.h")
 add_library(liveplusplus STATIC ${SOURCES})
 target_include_directories(liveplusplus PUBLIC ${INCLUDE_DIR})
 
