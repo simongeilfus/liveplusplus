@@ -5,35 +5,64 @@
 The most basic use is to initialize as soon as you can, and then use a sync point at the start of your frame:
 
 ```cpp
-#include "liveplusplus/liveplusplus.h"
+#include "lxx/lxx.h"
 
 void init()
 {
-    lxx::initialize();
+#if defined(LPP_ENABLED)
+    lxx::initDefaultAgent();
+#endif
+}
+```
+
+A synchronized agent can created for more flexibility:
+
+```cpp
+#include "lxx/lxx.h"
+
+void init()
+{
+#if defined(LPP_ENABLED)
+    lxx::initSynchronizedAgent();
+#endif
 }
 
 void render()
 {
-    lxx::syncPoint();
+#if defined(LPP_ENABLED)
+    if( lxx::wantsReload() ) {
+        lxx::reload();
+    }
+#endif
 }
+```
+
+A path to a previously created .json file can be provided to load project preferences:
+
+```cpp
+#if defined(LPP_ENABLED)
+    fs::path lxxPrefs = getAssetPath( "livexx_prefs.json" );
+    if( fs::exists( lxxPrefs ) ) lxx::initDefaultAgent( lxxPrefs );
+    else lxx::initDefaultAgent();
+#endif
 ```
 
 You can specify what options to customize at initialization time :
 
 ```cpp
-lxx::initialize( lxx::Settings()
-	.initialWindowMode( lxx::WindowMode::Minimized )
-	.receiveFocusOnRecompile( lxx::FocusMode::Never )
-	.enableContinuousCompilation( true )
-	.additionalCompilerOptions( L"-DLPP_COMPILED" )
-);
+lpp::LppProjectPreferences preferences = {
+    .exceptionHandler = {
+        .isEnabled = true,
+        .order = 0
+    },
+    .continuousCompilation = {
+        .directory = L"Directory/To/Watch",
+        .timeout = 100,
+        .isEnabled = true
+    }
+};
+
+lxx::initDefaultAgent( &preferences );
 ```
-
-Or request for a callback to be called after a patch has been applied:
-
-```cpp
-lxx::instance().addPostPatchFn( [this]() { /* do something */ } );
-```
-
 
 
