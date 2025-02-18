@@ -1,4 +1,4 @@
-cmake_minimum_required (VERSION 3.6)
+cmake_minimum_required( VERSION 3.10 FATAL_ERROR )
 
 #check dependencies
 if(NOT EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/third_party/LivePP)
