@@ -26,6 +26,9 @@ lxx::lxx()
 
 lxx::~lxx()
 {
+	if( mDefaultAgent ) {
+		lpp::LppDestroyDefaultAgent( mDefaultAgent.get() );
+	}		
 	if( mSynchronizedAgent ) {
 		lpp::LppDestroySynchronizedAgent( mSynchronizedAgent.get() );
 	}
